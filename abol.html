@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Abol Seva Charitable Trust — Animal Services</title>
+
+  <!-- Bootstrap (optional but used for grid & utilities) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent:#2e8b57; /* green charity accent */
+      --accent-2:#28a745;
+      --muted:#6c757d;
+      --bg:#f4f7f6;
+      --card-bg:#ffffff;
+      --glass: rgba(255,255,255,0.75);
+      --radius: .75rem;
+      --container-max:1180px;
+    }
+    
+
+    /* Basic */
+    *{box-sizing:border-box}
+    body{
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin:0;
+      background:var(--bg);
+      color:#1f2937;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .container{max-width:var(--container-max); margin:0 auto; padding:0 1rem;}
+
+    /* Header / Nav */
+    header.site-header{
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+      color:white;
+      position:sticky;
+      top:0;
+      z-index:999;
+      box-shadow:0 3px 12px rgba(0,0,0,0.08);
+    }
+    .site-brand{font-weight:700; letter-spacing:0.2px;}
+    .nav-link{color:rgba(255,255,255,0.95) !important; font-weight:500;}
+    .nav-link:hover{opacity:.9;}
+    .header-cta{background:rgba(255,255,255,0.12); border-radius:999px; padding:.35rem .85rem; color:white; font-weight:600; border:1px solid rgba(255,255,255,0.08)}
+    @media (max-width:767px){
+      .nav-list { display:none; }
+    }
+
+    /* Hero */
+    .hero{
+      min-height:74vh;
+      display:flex;
+      align-items:center;
+      padding:3.5rem 1rem;
+      position:relative;
+      overflow:hidden;
+      background-image:linear-gradient(rgba(8,30,20,0.45), rgba(8,30,20,0.25)), url('images/trust-bg.jpg');
+      background-size:cover; background-position:center;
+      color:white;
+       background-image: url('./slide1.jpg'); 
+       background-size: cover;     
+       background-position: center; 
+       background-repeat: no-repeat;
+    }
+    .hero .left{max-width:720px;
+      color: #0b2b21;
+    }
+    .eyebrow{display:inline-block; background:rgba(255,255,255,0.12); padding:.25rem .6rem; border-radius:999px; font-weight:600; letter-spacing:0.4px; margin-bottom:1rem;    color: #0b2b21;}
+    .hero h1{font-size:2.25rem; margin:.25rem 0 1rem; line-height:1.05;  color: #0b2b21;}
+    .hero p.lead{font-size:1.05rem; opacity:.95; margin-bottom:1.25rem;  color: #0b2b21;}
+
+    .hero-cta .btn{min-width:160px;}
+
+    /* Hero counts card */
+    .stats-grid{display:flex; gap:1rem; margin-top:1.5rem; flex-wrap:wrap;}
+    .stat-card{
+      background:var(--glass);
+      padding: .75rem 1rem;
+      border-radius: .8rem;
+      min-width:140px;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 6px 18px rgba(6,10,8,0.12);
+    }
+    .stat-card .num{font-size:1.45rem; font-weight:700; color:var(--accent-2); }
+
+    /* Services */
+    section.services{padding:3rem 1rem;}
+    .service-card{
+      border-radius:1rem;
+      background:var(--card-bg);
+      padding:1rem;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .service-card:hover{transform:translateY(-6px); box-shadow: 0 10px 28px rgba(16,24,32,0.08);}
+    .service-card img{width:100%; border-radius:.7rem; height:170px; object-fit:cover; margin-bottom:.75rem;}
+
+    /* Gallery */
+    .gallery-wrap{max-width:900px; margin:0 auto;}
+    .gallery{position:relative; border-radius:1rem; overflow:hidden; background:linear-gradient(180deg,#fff,#f8faf8); box-shadow:0 8px 30px rgba(16,24,32,0.06);}
+    .gallery img{width:100%; height:420px; object-fit:cover; display:block; opacity:0; transform:scale(1.02); transition:opacity .6s ease, transform .6s ease;}
+    .gallery img.active{opacity:1; transform:scale(1);}
+    .gallery-controls{position:absolute; inset:0; display:flex; justify-content:space-between; align-items:center; pointer-events:none;}
+    .gallery-controls button{pointer-events:auto; background:rgba(0,0,0,0.45); border:none; color:white; padding:.6rem .8rem; border-radius:999px; margin: 0 1rem; transition:transform .15s;}
+    .gallery-controls button:active{transform:scale(.96);}
+
+    /* Contact & form */
+    section.contact{padding:3rem 1rem; background:linear-gradient(180deg,#f7fbf8,#ffffff);}
+    .form-card{background:var(--card-bg); padding:1.25rem; border-radius: .9rem; box-shadow: 0 8px 24px rgba(10,15,12,0.04);}
+
+    /* Footer */
+    footer.site-footer{padding:2rem 1rem; background:#0b2b21; color:rgba(255,255,255,0.92);}
+
+    /* Utilities & small */
+    .muted{color:var(--muted);}
+    .chip{display:inline-block; background:rgba(2,96,64,0.08); color:var(--accent); padding:.25rem .5rem; border-radius:999px; font-weight:600;}
+
+    /* small animations */
+    .fade-up{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease;}
+    .fade-up.visible{opacity:1; transform:none;}
+
+    /* Mobile tweaks */
+    @media (max-width:991px){
+      .hero h1{font-size:1.6rem;}
+      .gallery img{height:320px;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container d-flex align-items-center justify-content-between py-3">
+      <div class="d-flex align-items-center gap-3">
+        <img src="images/logo-small.png" alt="Abol Seva logo" style="height:44px;border-radius:8px;object-fit:cover;">
+        <div>
+          <div class="site-brand">Abol Seva Charitable Trust</div>
+          <div style="font-size:.8rem; color:rgba(255,255,255,0.92); margin-top:-2px;">Helping Animals • Rescue • Adoption • Care</div>
+        </div>
+      </div>
+
+      <nav class="d-flex align-items-center gap-3">
+        <ul class="nav gap-2 nav-list">
+          <li><a class="nav-link" href="#home">Home</a></li>
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#services">Services</a></li>
+          <li><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+
+        <button class="header-cta" id="donateBtnTop" aria-controls="donateModal">Donate</button>
+
+        <!-- Mobile menu toggle (simple) -->
+        <button class="btn btn-outline-light d-md-none" id="mobileToggle" aria-label="Open menu">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section id="home" class="hero" role="region" aria-label="Intro">
+      <div class="container">
+        <div class="left">
+          <span class="eyebrow">Rescue • Rehabilitate • Rehome</span>
+          <h1>Give a second chance to <span style="color: color: #0b2b21;; text-shadow:0 2px 12px rgba(0,0,0,0.4)">stray animals</span> — join our mission</h1>
+          <p class="lead">We rescue injured and abandoned animals, provide medical care, and find loving homes. Be part of our community — adopt, donate, volunteer.</p>
+
+          <div class="d-flex gap-3 hero-cta flex-wrap">
+            <button class="btn btn-light btn-lg" id="adoptNow">Adopt Now</button>
+            <button class="btn btn-warning btn-lg" id="donateNow">Donate</button>
+          </div>
+
+          <div class="stats-grid mt-4">
+            <div class="stat-card" aria-hidden="true">
+              <div class="num js-count" data-target="500">0</div>
+              <div class="muted" style="font-size:.9rem;">Animals Rescued</div>
+            </div>
+            <div class="stat-card">
+              <div class="num js-count" data-target="200">0</div>
+              <div class="muted" style="font-size:.9rem;">Adoptions</div>
+            </div>
+            <div class="stat-card">
+              <div class="num js-count" data-target="1200">0</div>
+              <div class="muted" style="font-size:.9rem;">Volunteers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-5">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <div class="fade-up visible">
+              <h2>About Abol Seva</h2>
+              <p class="muted">Founded in 2020, Abol Seva Charitable Trust is committed to animal welfare across India. We rescue, rehabilitate, and rehome animals — and we work to educate communities about compassionate care.</p>
+              <ul class="list-unstyled">
+                <li><strong>Registration:</strong> ABC12345</li>
+                <li><strong>Contact:</strong> +91-9876543210</li>
+                <li><strong>Location:</strong> Gujarat, India</li>
+              </ul>
+              <div class="mt-3">
+                <button class="btn btn-outline-success" id="learnMore">Learn More</button>
+                <button class="btn btn-success" id="volunteer">Become Volunteer</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card p-0" style="border-radius:1rem; overflow:hidden;">
+              <img src="images/about-collage.jpg" alt="About collage" style="width:100%; height:320px; object-fit:cover;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3>Our Services</h3>
+          <input id="serviceSearch" class="form-control form-control-sm" style="max-width:260px" placeholder="Search services...">
+        </div>
+
+        <div class="row g-4" id="serviceGrid">
+          <div class="col-md-4">
+            <div class="service-card">
+              <img src="images/adoption.jpg" alt="Adoption">
+              <h5>Animal Adoption</h5>
+              <p class="muted">Find loving pets ready for adoption. We screen adopters and support each match for long term success.</p>
+              <div class="mt-2">
+                <button class="btn btn-sm btn-success adoptOpen">View Animals</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="service-card">
+              <img src="images/medical.jpg" alt="Medical care">
+              <h5>Medical Care</h5>
+              <p class="muted">On-site veterinary care, vaccinations, sterilization camps and ongoing treatment for rescued animals.</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="service-card">
+              <img src="images/rescue.jpg" alt="Rescue">
+              <h5>Rescue Operations</h5>
+              <p class="muted">24/7 rescue team for injured and distressed animals. Call our emergency helpline anytime.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="py-5">
+      <div class="container gallery-wrap">
+        <h3 class="mb-4 text-center">Our Animal Gallery</h3>
+        <div class="gallery" aria-live="polite">
+          <img src="images/dog1.jpg" alt="Dog" class="active" />
+          <img src="images/cat1.jpg" alt="Cat" />
+          <img src="images/puppy.jpg" alt="Puppy" />
+          <div class="gallery-controls">
+            <button class="prev" aria-label="Previous image">&#10094;</button>
+            <button class="next" aria-label="Next image">&#10095;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h3 class="text-center mb-4">Contact Us</h3>
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <form id="contactForm" class="form-card" novalidate>
+              <div class="mb-3">
+                <label for="cname" class="form-label">Name</label>
+                <input id="cname" class="form-control" type="text" required placeholder="Your name">
+              </div>
+              <div class="mb-3">
+                <label for="cemail" class="form-label">Email</label>
+                <input id="cemail" class="form-control" type="email" required placeholder="name@example.com">
+              </div>
+              <div class="mb-3">
+                <label for="cmessage" class="form-label">Message</label>
+                <textarea id="cmessage" class="form-control" rows="5" required placeholder="How can we help?"></textarea>
+              </div>
+
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success">Send Message</button>
+                <button type="button" class="btn btn-outline-secondary" id="contactClear">Clear</button>
+              </div>
+            </form>
+            <div id="contactResult" class="mt-3" role="status" aria-live="polite" style="display:none;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+      <div>
+        <strong>Abol Seva Charitable Trust</strong><br />
+        &copy; <span id="yearNow"></span> All rights reserved.
+      </div>
+      <div class="d-flex gap-3 align-items-center">
+        <small class="muted">Contact: +91-9876543210</small>
+        <div class="d-flex gap-2">
+          <a href="#" style="color:inherit; text-decoration:none">Privacy</a>
+          <a href="#" style="color:inherit; text-decoration:none">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- DONATE / ADOPT MODAL (simple) -->
+  <div id="modalBackdrop" style="position:fixed; inset:0; background:rgba(2,6,5,0.6); display:none; align-items:center; justify-content:center; z-index:1200;">
+    <div role="dialog" aria-modal="true" style="background:white; max-width:520px; width:94%; border-radius:1rem; padding:1.25rem; box-shadow:0 12px 40px rgba(2,8,6,0.4);">
+      <div class="d-flex justify-content-between align-items-start">
+        <h5 id="modalTitle">Donate to Abol Seva</h5>
+        <button id="modalClose" aria-label="Close modal" style="background:none;border:none;font-size:1.1rem;">✕</button>
+      </div>
+
+      <div id="modalBody" style="margin-top:.75rem;">
+        <p class="muted">Your support saves lives. Choose an option below to donate or inquire about adoption.</p>
+        <div class="d-flex gap-2 mt-2">
+          <button class="btn btn-success" id="modalDonate">Donate ₹500</button>
+          <button class="btn btn-outline-secondary" id="modalContact">Contact Us</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional: Bootstrap JS bundle (for dropdowns if needed) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // ========== small helpers ==========
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+    // Year
+    document.getElementById('yearNow').innerText = new Date().getFullYear();
+
+    // Mobile menu (very small)
+    const mobileToggle = document.getElementById('mobileToggle');
+    if (mobileToggle) {
+      mobileToggle.addEventListener('click', () => {
+        const navList = document.querySelector('.nav-list');
+        if (navList) navList.style.display = navList.style.display === 'flex' ? 'none' : 'flex';
+      });
+    }
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+
+    // ===== Counters (animates when visible) =====
+    const counterEls = $$('.js-count');
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry=>{
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = +el.dataset.target || 0;
+          let current = 0;
+          const step = Math.max(1, Math.floor(target / 100));
+          const timer = setInterval(()=>{
+            current += step;
+            if (current >= target) {
+              el.textContent = target.toLocaleString();
+              clearInterval(timer);
+            } else {
+              el.textContent = current.toLocaleString();
+            }
+          }, 18);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, {threshold:0.4});
+    counterEls.forEach(el=>counterObserver.observe(el));
+
+    // ===== Gallery slider (autoplay + controls) =====
+    const galleryImgs = $$('#gallery .gallery img');
+    let gIndex = 0;
+    function showGallery(i){
+      galleryImgs.forEach((img, idx)=> img.classList.toggle('active', idx===i));
+    }
+    showGallery(gIndex);
+
+    const nextBtn = $$('#gallery .next')[0];
+    const prevBtn = $$('#gallery .prev')[0];
+    if (nextBtn) nextBtn.addEventListener('click', ()=> { gIndex = (gIndex+1) % galleryImgs.length; showGallery(gIndex); resetGalleryTimer();});
+    if (prevBtn) prevBtn.addEventListener('click', ()=> { gIndex = (gIndex-1+galleryImgs.length) % galleryImgs.length; showGallery(gIndex); resetGalleryTimer();});
+
+    let galleryTimer = setInterval(()=>{ gIndex = (gIndex+1) % galleryImgs.length; showGallery(gIndex); }, 4000);
+    function resetGalleryTimer(){ clearInterval(galleryTimer); galleryTimer = setInterval(()=>{ gIndex = (gIndex+1) % galleryImgs.length; showGallery(gIndex); }, 4000); }
+
+    // ===== Services search filter =====
+    document.getElementById('serviceSearch').addEventListener('input', (e)=>{
+      const q = e.target.value.trim().toLowerCase();
+      $$('#serviceGrid .service-card').forEach(card=>{
+        const txt = card.innerText.toLowerCase();
+        card.parentElement.style.display = txt.includes(q) ? '' : 'none';
+      });
+    });
+
+    // ===== Modal donate/adopt =====
+    const modal = document.getElementById('modalBackdrop');
+    const modalTitle = document.getElementById('modalTitle');
+    const donateNow = document.getElementById('donateNow');
+    const donateBtnTop = document.getElementById('donateBtnTop');
+    const adoptNow = document.getElementById('adoptNow');
+    const modalClose = document.getElementById('modalClose');
+    const modalDonate = document.getElementById('modalDonate');
+    const modalContact = document.getElementById('modalContact');
+
+    function openModal(mode='donate'){
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+      if(mode==='adopt') {
+        modalTitle.innerText = 'Adoption Inquiry';
+        modalDonate.style.display = 'none';
+      } else {
+        modalTitle.innerText = 'Donate to Abol Seva';
+        modalDonate.style.display = '';
+      }
+    }
+    function closeModal(){ modal.style.display = 'none'; modal.setAttribute('aria-hidden','true'); }
+
+    donateNow.addEventListener('click', ()=> openModal('donate'));
+    donateBtnTop.addEventListener('click', ()=> openModal('donate'));
+    adoptNow.addEventListener('click', ()=> openModal('adopt'));
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=> { if(e.target===modal) closeModal(); });
+
+    modalDonate.addEventListener('click', ()=>{
+      alert('Thank you! Redirecting to donation gateway (placeholder).');
+      closeModal();
+    });
+    modalContact.addEventListener('click', ()=>{
+      // focus contact form
+      closeModal();
+      document.getElementById('cname').focus();
+    });
+
+    // ===== Contact form simple validation + fake send =====
+    const contactForm = document.getElementById('contactForm');
+    const contactResult = document.getElementById('contactResult');
+    contactForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('cname').value.trim();
+      const email = document.getElementById('cemail').value.trim();
+      const message = document.getElementById('cmessage').value.trim();
+      if(!name || !email || !message){
+        contactResult.style.display='block';
+        contactResult.innerHTML = '<div class="text-danger">Please fill all fields.</div>';
+        return;
+      }
+      // basic email regex
+      if(!/^\S+@\S+\.\S+$/.test(email)){
+        contactResult.style.display='block';
+        contactResult.innerHTML = '<div class="text-danger">Please enter a valid email.</div>';
+        return;
+      }
+
+      // simulate sending
+      contactResult.style.display='block';
+      contactResult.innerHTML = '<div class="text-success">Message sent! We will get back to you soon.</div>';
+      contactForm.reset();
+      setTimeout(()=> contactResult.style.display='none', 5000);
+    });
+    document.getElementById('contactClear').addEventListener('click', ()=> contactForm.reset());
+
+    // ===== small fade-up reveal on scroll =====
+    const reveals = $$('.fade-up');
+    const revObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, {threshold:0.12});
+    reveals.forEach(r => revObs.observe(r));
+
+    // ===== Accessibility: close modal with ESC =====
+    window.addEventListener('keydown', e => {
+      if(e.key === 'Escape') closeModal();
+    });
+
+    // ===== Small progressive image loader (optional): replace with better lazy loading if needed =====
+    document.addEventListener('DOMContentLoaded', ()=>{
+      // try native lazy loading attribute
+      $$('#gallery img, .service-card img, .hero img').forEach(img => img.loading = 'lazy');
+    });
+
+  </script>
+</body>
+</html>
